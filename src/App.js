@@ -1,9 +1,22 @@
 import React from 'react';
 import Grid_alcaldia from './Grid';
-import styles from'./Grid.css'
+import Boton from './Boton'
+import styles from './styles/styles.css';
 
 function App() {
-  return <div > <Grid_alcaldia className={styles.Grilla_Datos}/></div>;
+  return( 
+  <div className="contenedor"> 
+     <h1>Alcaldia SENA </h1>
+    <div className="cuerpo"> 
+       <Boton name="Nivel Socioeconomico"/>
+       <br></br>
+       <Boton name="Barrio" />
+    </div> 
+    <div className="tabla">
+        <Grid_alcaldia />
+    </div>
+  </div>
+  )
 }
 
 export default App;

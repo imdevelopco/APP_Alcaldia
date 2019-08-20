@@ -27,14 +27,14 @@ class Grid_alcaldia extends Component {
       });
     };
   render(){
-    return(<div>
+    return(
       <ReactDataGrid
         columns={columns}
         rowGetter={i => this.state.rows[i]}
         rowsCount={100}
         onGridRowsUpdated={this.onGridRowsUpdated}
         enableCellSelect={true}
-      /> </div>
+      />
   );
   }
 }
