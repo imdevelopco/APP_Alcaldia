@@ -1,13 +1,20 @@
-const express = require ('express');
-const http = require('http');
-const sql = require('mssql');
+var express = require('express');
+var app = express();
 
-async () => {
-    try {
-        await sql.connect('mssql://secretaria_alcaldia:123456@localhost/PROYECTOFINAL')
-        const result = await sql.query`select * from secretaria.barrio`
-        console.log(result);
-    } catch (err) {
-        // ... error checks
-    }
-}
+const sql = require("msnodesqlv8");
+
+const connectionString = {
+    server:".",
+    Database: "PROYECTO_FINAL",
+    Trusted_Connection: "Yes",
+    Driver:"{SQL Server Native Client 11.0}"
+};
+
+const query = "SELECT * FROM secretaria.Barrio";
+ 
+sql.query(connectionString, query, (err, rows) => {
+    console.log(rows);
+});
+var server = app.listen(5000, function () {
+    console.log('Server is running..');
+});
