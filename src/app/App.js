@@ -7,7 +7,7 @@ class App extends React.Component{
   render(){
     return( 
         <div className="contenedor"> 
-          <h1>Alcaldia SENA </h1>
+          <h1>Alcaldia SENA</h1>
           <div className="cuerpo"> 
             <Boton name="Nivel Socioeconomico"/>
             <br></br>
