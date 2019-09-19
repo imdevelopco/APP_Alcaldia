@@ -23,7 +23,7 @@
   },
   "scripts": {
     "start": "npx nodemon server.js",
-    "webpack": "webpack --mode development"
+    "webpack": "webpack --watch"
   },
   "browserslist": {
     "production": [

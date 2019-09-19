@@ -1,41 +1,59 @@
 import React,{Component} from 'react';
 import ReactDataGrid from 'react-data-grid';
-
+/*
 const columns = [
   { key: "id", name: "ID", editable: true },
   { key: "title", name: "Title", editable: true },
-  { key: "complete", name: "Complete", editable: false }
+  { key: "complete", name: "Complete", editable: false },
+  { key: "comp2lete", name: "Compl2ete", editable: false },
+  { key: "compl6ete", name: "Compl1ete", editable: false }
 ];
-
-const rows = new Array();
-/* Llenar tabla con Datos*/
-
-for (var i = 0; i < 100;i++) {
-    rows.push({ id: i,   title: "Task 1", complete: i+10 });
-}
+*/
 
 class Grid_alcaldia extends Component {
-  state = { rows };
-    onGridRowsUpdated = ({ fromRow, toRow, updated }) => {
-      this.setState(state => {
-        const rows = state.rows.slice();
-        for (let i = fromRow; i <= toRow; i++) {
-          // Aqui se Actualiza
-          rows[i] = { ...rows[i], ...updated };
-        }
-        return { rows };
-      });
+  constructor(props){
+    super(props);
+    this.state = { 
+      rowsTemp: [],
+      columns: [],
+      rows: [],
     };
+  }
+
+  componentDidMount(){
+      fetch('http://localhost:3000/select')
+      .then(res => res.json())
+      .then(data => this.setState({rowsTemp : data.rows},
+        data.meta.forEach((Element) => {           
+              Element.key = Element.name;
+              this.state.columns.push(
+                {
+                  "key" : Element.key,
+                  "name" : Element.name
+                })
+            })))
+  }
+
   render(){
+    if(this.state.rowsTemp.length > 0){   
+         this.state.rowsTemp.forEach(element => {
+           var obj = {};
+           element.forEach((e,i)=>{
+             obj[this.state.columns[i].key] = element[i]
+           })
+           this.state.rows.push(obj);
+         });
+
     return(
-      <ReactDataGrid
-        columns={columns}
+     <ReactDataGrid
+        columns={this.state.columns}        
         rowGetter={i => this.state.rows[i]}
-        rowsCount={100}
-        onGridRowsUpdated={this.onGridRowsUpdated}
-        enableCellSelect={true}
+        rowsCount={this.state.rows.length}  
       />
-  );
+    )
+    }else{
+      return(<p> Cargando datos... </p>);
+    }
   }
 }
 
