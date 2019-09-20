@@ -44,6 +44,10 @@ function toPromise (callback) {
       console.log("Test out Catch error: " + err.message);
     }
   }
+
+async function INSERT(query){
+  
+}
   
       
 module.exports = {

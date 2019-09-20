@@ -1,15 +1,7 @@
 import React,{Component} from 'react';
 import ReactDataGrid from 'react-data-grid';
-/*
-const columns = [
-  { key: "id", name: "ID", editable: true },
-  { key: "title", name: "Title", editable: true },
-  { key: "complete", name: "Complete", editable: false },
-  { key: "comp2lete", name: "Compl2ete", editable: false },
-  { key: "compl6ete", name: "Compl1ete", editable: false }
-];
-*/
 
+const tablas = ["barrio"];
 class Grid_alcaldia extends Component {
   constructor(props){
     super(props);
@@ -21,7 +13,7 @@ class Grid_alcaldia extends Component {
   }
 
   componentDidMount(){
-      fetch('http://localhost:3000/select')
+      fetch('http://localhost:3000/' + tablas[0])
       .then(res => res.json())
       .then(data => this.setState({rowsTemp : data.rows},
         data.meta.forEach((Element) => {           
@@ -35,14 +27,19 @@ class Grid_alcaldia extends Component {
   }
 
   render(){
+    // RowsTemp: array donde se alojan las filas, que retorna la api
     if(this.state.rowsTemp.length > 0){   
          this.state.rowsTemp.forEach(element => {
            var obj = {};
            element.forEach((e,i)=>{
+             // Cada dato de la fila debe tener
              obj[this.state.columns[i].key] = element[i]
            })
            this.state.rows.push(obj);
          });
+
+         console.log(this.state.rows);
+         
 
     return(
      <ReactDataGrid
