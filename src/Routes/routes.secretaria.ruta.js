@@ -3,7 +3,7 @@ const router = express.Router();
 const {SELECT} = require('../Models/alcaldia.model');
 
 router.get("/barrio",(req,res) =>{
-    SELECT(req,res,"SELECT * FROM secretaria.ruta")   
+    SELECT(req,res,"SELECT name FROM SYSOBJECTS WHERE   xtype = 'U';")   
 });
 
 router.post("/barrio",async (req,res) => {

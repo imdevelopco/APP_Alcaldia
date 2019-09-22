@@ -38,9 +38,6 @@ class Grid_alcaldia extends Component {
            this.state.rows.push(obj);
          });
 
-         console.log(this.state.rows);
-         
-
     return(
      <ReactDataGrid
         columns={this.state.columns}        
