@@ -22,7 +22,7 @@ function toPromise (callback) {
     }
   }
   
-  async function SELECT (req,res,consulta) {
+  async function execQuery (req,res,consulta) {
     let sqlOpen = toPromise(sql.open)
     try {
       console.log('sqlOpen ....')
@@ -44,12 +44,7 @@ function toPromise (callback) {
       console.log("Test out Catch error: " + err.message);
     }
   }
-
-async function INSERT(query){
   
-}
-  
-      
 module.exports = {
-  SELECT : SELECT,
+  execQuery : execQuery,
 };    

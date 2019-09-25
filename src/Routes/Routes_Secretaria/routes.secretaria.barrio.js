@@ -1,20 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const {SELECT} = require('../Models/alcaldia.model');
+const {execQuery} = require('../../Models/alcaldia.model');
 
 router.get("/barrio",(req,res) =>{
-    SELECT(req,res,"SELECT name FROM SYSOBJECTS WHERE   xtype = 'U';")   
+    execQuery(req,res,"SELECT * FROM secretaria.barrio;")   
 });
 
 router.post("/barrio",async (req,res) => {
     const {descripcion} = req.body;
-    SELECT(req,res,"INSERT INTO secretaria.ruta(descripcion) VALUES('" + descripcion +"');");
+    execQuery(req,res,"INSERT INTO secretaria.barrio(descripcion) VALUES('" + descripcion +"');");
     res.end("insert realizado");  
 });
 
 router.delete("/barrio",async(req,res) =>{
     const {descripcion} = req.body;
-    SELECT(req,res,"DELETE FROM secretaria.ruta WHERE descripcion = '"+ descripcion +"'")
+    execQuery(req,res,"DELETE FROM secretaria.barrio WHERE descripcion = '"+ descripcion +"'")
     res.end("delete realizado");
 });
 
