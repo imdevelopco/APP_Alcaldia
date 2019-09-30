@@ -6,6 +6,10 @@ router.get("/ruta",(req,res) =>{
     execQuery(req,res,"SELECT * FROM secretaria.ruta;")   
 });
 
+router.get("/ruta/:id",(req,res) =>{
+    execQuery(req,res,"SELECT * FROM secretaria.ruta WHERE id_ruta = "+ req.params.id+";")   
+});
+
 router.post("/ruta",async (req,res) => {
     const {descripcion} = req.body;
     execQuery(req,res,"INSERT INTO secretaria.ruta(descripcion) VALUES('" + descripcion +"');");

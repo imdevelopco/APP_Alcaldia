@@ -6,9 +6,13 @@ router.get("/nivel_socioeconomico",(req,res) =>{
     execQuery(req,res,"SELECT * FROM secretaria.nivel_socioeconomico;")   
 });
 
+router.get("/nivel_socioeconomico/:id",(req,res) =>{
+    execQuery(req,res,"SELECT * FROM secretaria.nivel_socioeconomico WHERE id_nivel_socioeconomico = "+ req.params.id)   
+});
+
 router.post("/nivel_socioeconomico",async (req,res) => {
     const {descripcion} = req.body;
-    execQuery(req,res,"INSERT INTO secretaria.ruta(descripcion) VALUES('" + descripcion +"');");
+    execQuery(req,res,"INSERT INTO secretaria.nivel_socioeconomico(descripcion) VALUES('" + descripcion +"');");
     res.end("insert realizado");  
 });
 
