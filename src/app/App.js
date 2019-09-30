@@ -7,8 +7,8 @@ class App extends React.Component{
   
   state = {
     tablas : [],
-    botones :[].
-    ActiveTable
+    botones :[],
+    ActiveTable : false
   }
   
   componentDidMount(){
@@ -17,13 +17,10 @@ class App extends React.Component{
     .then(data => this.setState({tablas : data.rows}, 
      data.rows.forEach((index) =>{
         this.state.botones.push(<Boton name={index}/>);
-         })),
-      this.setState(this.state.ActiveTable = this.state.tablas[0]))
+         })))
 }
 
   render(){        
-    console.log(this.state.botones);
-     
     return( 
         <div className="contenedor"> 
           <h1>Alcaldia SENA</h1>
@@ -31,7 +28,7 @@ class App extends React.Component{
             {this.state.botones}
           </div> 
           <div className="div_tabla">
-              <Grid_alcaldia name="parvulos"/>
+              <Grid_alcaldia name="persona"/>
           </div>
         </div>
     )
