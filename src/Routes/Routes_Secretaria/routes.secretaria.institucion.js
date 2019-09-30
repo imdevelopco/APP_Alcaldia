@@ -1,4 +1,4 @@
-const express = require('express');
+        const express = require('express');
 const router = express.Router();
 const {execQuery} = require('../../Models/alcaldia.model');
 
@@ -17,7 +17,6 @@ router.post("/institucion",async (req,res) => {
 });
 
 router.delete("/institucion/:id",async(req,res) =>{
-
     execQuery(req,res,"DELETE FROM secretaria.institucion WHERE id_institucion = "+req.params.id+";")   
     res.end("delete realizado");
 });
