@@ -4,33 +4,34 @@ import Boton from './Boton'
 import styles from './styles/styles.css';
 
 class App extends React.Component{
+  
   state = {
-    tablas : []
+    tablas : [],
+    botones :[].
+    ActiveTable
   }
   
   componentDidMount(){
-    fetch('http://localhost:3000/barrio')
+    fetch('http://localhost:3000/tablas')
     .then(res => res.json())
-    .then(data => this.setState({tablas : data.rows}
-      //element[0]: por qué es un arreglo de un dato solamente, y necesitamos sacar el dato
-      //            del arreglo.
-      
-    ))
+    .then(data => this.setState({tablas : data.rows}, 
+     data.rows.forEach((index) =>{
+        this.state.botones.push(<Boton name={index}/>);
+         })),
+      this.setState(this.state.ActiveTable = this.state.tablas[0]))
 }
 
-  render(){   
-    var tablas = this.state.tablas.map((index) =>{
-      return (<Boton name={index}/>);
-     })
-
+  render(){        
+    console.log(this.state.botones);
+     
     return( 
         <div className="contenedor"> 
           <h1>Alcaldia SENA</h1>
-          <div className="cuerpo"> 
-            {tablas}
+          <div className="div_botones"> 
+            {this.state.botones}
           </div> 
-          <div className="tabla">
-              <Grid_alcaldia />
+          <div className="div_tabla">
+              <Grid_alcaldia name="parvulos"/>
           </div>
         </div>
     )

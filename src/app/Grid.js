@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import ReactDataGrid from 'react-data-grid';
 
-const tablas = ["barrio"];
 class Grid_alcaldia extends Component {
   constructor(props){
     super(props);
@@ -13,7 +12,7 @@ class Grid_alcaldia extends Component {
   }
 
   componentDidMount(){
-      fetch('http://localhost:3000/' + tablas[0])
+      fetch('http://localhost:3000/' + this.props.name)
       .then(res => res.json())
       .then(data => this.setState({rowsTemp : data.rows},
         data.meta.forEach((Element) => {           
