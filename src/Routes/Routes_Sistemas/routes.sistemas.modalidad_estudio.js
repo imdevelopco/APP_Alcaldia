@@ -6,9 +6,13 @@ router.get("/modalidad_estudio",(req,res) =>{
     execQuery(req,res,"SELECT * FROM sistemas.modalidad_estudio;")   
 });
 
+router.get("/modalidad_estudio/:id",(req,res) =>{
+    execQuery(req,res,"SELECT * FROM sistemas.modalidad_estudio WHERE id_modalidad =" +req.params.id+ ";");   
+});
+
 router.post("/modalidad_estudio",async (req,res) => {
     const {descripcion} = req.body;
-    execQuery(req,res,"INSERT INTO sistemas.modalidad_estudio(descripcion) VALUES('" + descripcion +"');");
+    execQuery(req,res,"INSERT INTO sistemas.modalidad_estudio VALUES('" + descripcion +"');");
     res.end("insert realizado");  
 });
 

@@ -6,9 +6,13 @@ router.get("/jornada",(req,res) =>{
     execQuery(req,res,"SELECT * FROM sistemas.jornada;")   
 });
 
+router.get("/enfermedad/:id",(req,res) =>{
+    execQuery(req,res,"SELECT * FROM sistemas.jornada WHERE id_jornada =" +req.params.id+ ";");   
+});
+
 router.post("/jornada",async (req,res) => {
     const {descripcion} = req.body;
-    execQuery(req,res,"INSERT INTO sistemas.jornada(descripcion) VALUES('" + descripcion +"');");
+    execQuery(req,res,"INSERT INTO sistemas.jornada VALUES('" + descripcion +"');");
     res.end("insert realizado");  
 });
 

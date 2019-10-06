@@ -3,18 +3,22 @@ const router = express.Router();
 const {execQuery} = require('../../Models/alcaldia.model');
 
 router.get("/enfermedad",(req,res) =>{
-    execQuery(req,res,"SELECT * FROM sistemas.enfermedad;")   
+    execQuery(req,res,"SELECT * FROM sistemas.enfermedad ORDER BY id_enfermedad ASC;")   
+});
+
+router.get("/enfermedad/:id",(req,res) =>{
+    execQuery(req,res,"SELECT * FROM sistemas.enfermedad WHERE id_enfermedad =" +req.params.id+ ";");   
 });
 
 router.post("/enfermedad",async (req,res) => {
     const {descripcion} = req.body;
-    execQuery(req,res,"INSERT INTO secretaria.ruta(descripcion) VALUES('" + descripcion +"');");
+    execQuery(req,res,"INSERT INTO sistemas.enfermedad VALUES('" +descripcion+ "');");
     res.end("insert realizado");  
 });
 
 router.delete("/enfermedad",async(req,res) =>{
-    const {descripcion} = req.body;
-    execQuery(req,res,"DELETE FROM secretaria.ruta WHERE descripcion = '"+ descripcion +"'")
+    const {id_enfermedad} = req.body;
+    execQuery(req,res,"DELETE FROM sistemas.enfermedad WHERE id_enfermedad = " +id_enfermedad);
     res.end("delete realizado");
 });
 
