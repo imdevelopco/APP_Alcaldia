@@ -10,6 +10,12 @@ router.get("/enfermedad/:id",(req,res) =>{
     execQuery(req,res,"SELECT * FROM sistemas.jornada WHERE id_jornada =" +req.params.id+ ";");   
 });
 
+router.put("/jornada",async (req,res) => {
+    const {id_jornada,descripcion} = req.body;
+    execQuery(req,res,"Update sistemas.jornada SET descripcion='" + descripcion +"' WHERE id_jornada="+id_jornada+";");
+    res.end("Update realizado");  
+});
+
 router.post("/jornada",async (req,res) => {
     const {descripcion} = req.body;
     execQuery(req,res,"INSERT INTO sistemas.jornada VALUES('" + descripcion +"');");

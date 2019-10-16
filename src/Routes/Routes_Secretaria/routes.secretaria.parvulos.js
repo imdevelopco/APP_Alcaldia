@@ -10,9 +10,18 @@ router.get("/parvulos/:id",(req,res) =>{
     execQuery(req,res,"SELECT * FROM secretaria.parvulos WHERE numero_identificacion = "+ req.params.id+";")   
 });
 
+router.put("/parvulos",async (req,res) => {
+    const {estado,numero_identificacion,tipo_identificacion,id_guarderia} = req.body;
+    execQuery(req,res,"UPDATE secretaria.parvulos SET estado=" + estado + 
+     ",tipo_identificacion ='" + tipo_identificacion + "',id_guarderia=" + id_guarderia 
+     +" WHERE numero_identificacion=" + numero_identificacion +";")
+    res.end("Update realizado");  
+});
+
 router.post("/parvulos",async (req,res) => {
     const {estado,numero_identificacion,tipo_identificacion,id_guarderia} = req.body;
-    execQuery(req,res,"INSERT INTO secretaria.parvulos VALUES(" + estado + "," + numero_identificacion + ",'" + tipo_identificacion + "'," + id_guarderia +");");
+    execQuery(req,res,"INSERT INTO secretaria.parvulos VALUES(" + estado + "," 
+    + numero_identificacion + ",'" + tipo_identificacion + "'," + id_guarderia +");");
     res.end("insert realizado");  
 });
 

@@ -7,7 +7,7 @@ class Grid_alcaldia extends Component {
     this.state = { 
       rowsTemp: [],
       columns: [],
-      rows: [],
+      rows: []
     };
   }
 

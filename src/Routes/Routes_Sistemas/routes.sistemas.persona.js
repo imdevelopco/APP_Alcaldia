@@ -10,6 +10,14 @@ router.get("/persona/:id",(req,res) =>{
     execQuery(req,res,"SELECT * FROM sistemas.persona WHERE numero_identificacion =" +req.params.id+ ";");   
 });
 
+router.put("/persona",async (req,res) => {
+    const {numero_identificacion,tipo_identificacion,fecha_nacimiento,nombres,apellidos,id_familia} = req.body;
+    execQuery(req,res,"UPDATE sistemas.persona SET tipo_identificacion='"+tipo_identificacion+"',fecha_nacimiento='"+fecha_nacimiento
+    +"',nombres='"+nombres+"',apellidos='"+apellidos+"',id_familia="+id_familia+" WHERE numero_identificacion="+numero_identificacion+";");
+    res.end("Update realizado");  
+    
+});
+
 router.post("/persona",async (req,res) => {
     const {numero_identificacion,tipo_identificacion,fecha_nacimiento,nombres,apellidos,id_familia} = req.body;
     execQuery(req,res,"INSERT INTO sistemas.persona VALUES("+numero_identificacion+",'"+tipo_identificacion+"','"+fecha_nacimiento+"','"+nombres+"','"+apellidos+"',"+id_familia+");");

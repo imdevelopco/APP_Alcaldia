@@ -10,6 +10,13 @@ router.get("/empresa/:id",(req,res) =>{
     execQuery(req,res,"SELECT * FROM secretaria.empresa WHERE id_empresa ="+ req.params.id + ";") 
 });
 
+router.put("/empresa",async (req,res) => {
+    const {id_empresa,nombre_empresa,id_barrio} = req.body;
+    execQuery(req,res,"UPDATE secretaria.empresa SET nombre_empresa = '" + nombre_empresa +"',"
+    +"id_barrio ="+id_barrio+ " WHERE id_empresa ="+ id_empresa +";");
+    res.end("Update realizado");  
+});
+
 router.post("/empresa",async (req,res) => {
     const {id_empresa,nombre_empresa,id_barrio} = req.body;
     execQuery(req,res,"INSERT INTO secretaria.empresa VALUES(" + id_empresa +",'" + nombre_empresa+"'," +id_barrio +");");

@@ -1,6 +1,8 @@
 body{
-  background-color: #388e3c
+  background-color: #eeeeee
 }
+
+
 
 h1{
   text-align: center;
@@ -22,9 +24,13 @@ h1{
   width: 45%;
 }
 
+#Borrar{
+  background-color:  #bd4f4f !important;
+}
+
 .Boton{
-  background-color:  #ffcd62;
-  border: none;
+  background-color:  #53bd4f;
+  border: 1px solid #000000;
   color: hsl(0, 3%, 7%);
   padding: 15px 32px;
   text-align: center;

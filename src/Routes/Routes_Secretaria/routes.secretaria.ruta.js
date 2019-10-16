@@ -10,6 +10,12 @@ router.get("/ruta/:id",(req,res) =>{
     execQuery(req,res,"SELECT * FROM secretaria.ruta WHERE id_ruta = "+ req.params.id+";")   
 });
 
+router.put("/ruta",(req,res)=>{
+    const{id_ruta,descripcion} = req.body
+    execQuery(req,res,"UPDATE secretaria.ruta SET descripcion = '"+ descripcion + "' WHERE id_ruta ="+ id_ruta + ";") 
+    res.end("Update realizado");   
+});
+
 router.post("/ruta",async (req,res) => {
     const {descripcion} = req.body;
     execQuery(req,res,"INSERT INTO secretaria.ruta(descripcion) VALUES('" + descripcion +"');");

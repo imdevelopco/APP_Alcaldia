@@ -6,7 +6,9 @@ class Boton extends Component{
     }
     render(){
         return(
-            <button className="Boton" id={this.props.name} >{this.props.name}</button>
+            <button className="Boton" id={this.props.name} onClick={this.props.funcion} >
+            {this.props.name}
+            </button>
         )
     }
 }

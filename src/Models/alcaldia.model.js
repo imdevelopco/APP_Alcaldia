@@ -31,7 +31,7 @@ function toPromise (callback) {
       let connectionQuery = toPromise(connection.queryRaw)
       try {
         let data = await connectionQuery(consulta)
-        console.log('... connectionQuery 1')
+        console.log('... connectionQuery');
         console.log('rows.length ' + data.rows.length)
         res.end(JSON.stringify(data, null, 1))
         let close = toPromise(sql.close)
