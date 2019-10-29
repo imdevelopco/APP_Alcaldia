@@ -9,7 +9,7 @@
     "concurrently": "^4.1.2",
     "css-loader": "^3.2.0",
     "express": "^4.17.1",
-    "knex": "^0.19.2",
+    "knex": "^0.19.5",
     "morgan": "^1.9.1",
     "msnodesqlv8": "^0.8.3",
     "mssql": "^5.1.0",
